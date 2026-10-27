@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/geoip-view/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0d1117" />
+    <meta name="description" content="在浏览器中方便地浏览和查询 geoip-lite.dat 网段数据库。" />
+    <script>
+      (() => {
+        let theme = 'dark'
+        try {
+          const saved = localStorage.getItem('geoip-view-theme')
+          theme =
+            saved === 'light' || saved === 'dark'
+              ? saved
+              : matchMedia('(prefers-color-scheme: light)').matches
+                ? 'light'
+                : 'dark'
+        } catch {
+          theme = matchMedia('(prefers-color-scheme: light)').matches
+            ? 'light'
+            : 'dark'
+        }
+        document.documentElement.dataset.theme = theme
+        document
+          .querySelector('meta[name="theme-color"]')
+          ?.setAttribute('content', theme === 'light' ? '#f6f8fa' : '#0d1117')
+      })()
+    </script>
+    <title>GeoIP Lite Viewer</title>
+    <script type="module" crossorigin src="/geoip-view/assets/index-D99QkFeh.js"></script>
+    <link rel="stylesheet" crossorigin href="/geoip-view/assets/index-BRhWGOKV.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
